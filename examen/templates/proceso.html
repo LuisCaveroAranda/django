@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Proceso</title>
+
+    <style id="wp-custom-css">
+        article .entry-content p {
+            text-align: justify
+        }
+
+
+        .number {
+            padding: 10px;
+            margin-right: 5px;
+            background: #0f0f58;
+            color: white;
+            border: solid #324d84f 1px;
+            border-radius: 25px 25px 25px 25px;
+            -moz-border-radius: 25px 25px 25px 25px;
+            -webkit-border-radius: 0 10px 0 10px
+        }
+
+        .wpt_test .button {
+            width: 100% !important
+        }
+
+        .borders {
+            adding: 3px 10px;
+            border: PowderBlue 5px solid;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    {% load static %}
+    <div class="conteiner bg-dark">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom text-bg-dark ">
+            <a href=""
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <svg class="bi me-2" width="40" height="32">
+                    <img src="{% static '../static/logo.png' %}" width="250" height="150" alt=""
+                        class="rounded float-left">
+                </svg>
+            </a>
+        </header>
+    </div>
+    <div class="container">
+        <span>
+            <h3>Bienvenido:
+                <strong>{{nombres}}</strong>
+            </h3>
+        </span>
+    </div>
+    <form method="post" action="/examen/resultado/">
+        {% csrf_token %}
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">1.</span>
+                    <span class="fw-bold"> ¿Aceptarías trabajar escribiendo artículos en la sección económica de un
+                        diario?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r1" id="r1" required="required" value=1>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r1" id="r1" value=0>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">2.</span>
+                    <span class="fw-bold"> ¿Te ofrecerías para organizar la despedida de soltero o soltera de uno de tus
+                        amigos?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r2" id="r2" value=1 required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r2" id="r2" value=0 id="r2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">3.</span>
+                    <span class="fw-bold"> ¿Te gustaría dirigir/crear un proyecto de urbanización en tu provincia?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r3" id="r3" value=1 required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r3" value=0 id="r3">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">4.</span>
+                    <span class="fw-bold">¿A una frustración siempre opones un pensamiento positivo?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r4" value=1 id="r4" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r4" value=0 id="r4">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">5.</span>
+                    <span class="fw-bold"> ¿Te dedicarías a socorrer a personas accidentadas o atacadas por asaltantes?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r5" id="r5" value=1 required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r5" id="r5" value=0>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">6.</span>
+                    <span class="fw-bold"> ¿Cuando eras chico, te interesaba saber cómo estaban construidos tus
+                        juguetes?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r6" id="r6" required="required" value=1>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r6" id="r6" value=0>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">7.</span>
+                    <span class="fw-bold">¿Te interesan más los misterios de la naturaleza que los secretos de la
+                        tecnología?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r7" id="r7" required="required" value=1>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r7" id="r7" value=0>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">8.</span>
+                    <span class="fw-bold"> ¿Escuchas atentamente los problemas que te plantean tus amigos?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r8" id="r8" value=1 required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r8" id="r8" value=0>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">9.</span>
+                    <span class="fw-bold"> ¿Te ofrecerías para explicar a tus compañeros un determinado tema que ellos
+                        no entendieron?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r9" id="r9" value=1 required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r9" value=1 id="r9">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">10.</span>
+                    <span class="fw-bold"> ¿Eres exigente y crítico con tu equipo de trabajo?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r10" value=1 id="r10" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r10" value=0 id="r10">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">11.</span>
+                    <span class="fw-bold"> ¿Te atrae armar rompecabezas o puzzles?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r11" value=1 id="r11" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r11" value=0 id="r11">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">12.</span>
+                    <span class="fw-bold"> ¿Te gustaría conocer la diferencia entre macroeconomía y microeconomía?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r12" value=1 id="r12" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r12" value=0 id="r12">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">13.</span>
+                    <span class="fw-bold"> ¿Usar uniforme te hace sentir distinto, importante?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r13" value=1 id="r13" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r13" value=0 id="r13">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">14.</span>
+                    <span class="fw-bold"> ¿Participarías como profesional en un espectáculo de acrobacia aérea?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r14" value=1 id="r14" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r14" value=0 id="r14">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">15.</span>
+                    <span class="fw-bold"> ¿Organizas tu dinero de manera que te alcance hasta el próximo cobro?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r15" value=1 id="r15" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r15" value=0 id="r15">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">16.</span>
+                    <span class="fw-bold"> ¿Convences fácilmente a otras personas sobre la validez de tus argumentos?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r16" value=1 id="r16" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r16" value=0 id="r16">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">17.</span>
+                    <span class="fw-bold"> ¿Te gustaría estar informado sobre los nuevos descubrimientos que se están
+                        realizando sobre el origen del Universo?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r17" value=1 id="r17" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r17" value=0 id="r17">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">18.</span>
+                    <span class="fw-bold"> ¿Ante una situación de emergencia actúas rápidamente?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r18" value=1 id="r18" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r18" value=0 id="r18">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">19.</span>
+                    <span class="fw-bold"> ¿Cuando tienes que resolver un problema matemático, perseveras hasta
+                        encontrar la solución?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r19" value=1 id="r19" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r19" value=0 id="r19">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">20.</span>
+                    <span class="fw-bold"> ¿Si te convocara tu club preferido para planificar, organizar y dirigir un
+                        campo de deportes, aceptarías?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r20" value=1 id="r20" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r20" value=0 id="r20">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">21.</span>
+                    <span class="fw-bold">¿Eres el que pone un toque de alegría en las fiestas?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r21" value=1 id="r21" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r21" value=0 id="r21">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">22.</span>
+                    <span class="fw-bold"> ¿Crees que los detalles son tan importantes como el todo?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r22" value=1 id="r22" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r22" value=0 id="r22">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">23.</span>
+                    <span class="fw-bold"> ¿Te sentirías a gusto trabajando en un ámbito hospitalario?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r23" value=1 id="r23" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r23" value=0 id="r23">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">24.</span>
+                    <span class="fw-bold"> ¿Te gustaría participar para mantener el orden ante grandes desórdenes y
+                        cataclismos?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r24" value=1 id="r24" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r24" value=0 id="r24">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">25.</span>
+                    <span class="fw-bold"> ¿Pasarías varias horas leyendo algún libro de tu interés?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r25" value=1 id="r25" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r25" value=0 id="r25">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">26.</span>
+                    <span class="fw-bold"> ¿Planificas detalladamente tus trabajos antes de empezar?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r26" value=1 id="r26" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r26" value=0 id="r26">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">27.</span>
+                    <span class="fw-bold"> ¿Entablas una relación casi personal con tu ordenador?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r27" value=1 id="r27" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r27" value=0 id="r27">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">28.</span>
+                    <span class="fw-bold"> ¿Disfrutas modelando con arcilla?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r28" value=1 id="r28" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r28" value=0 id="r28">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">29.</span>
+                    <span class="fw-bold"> ¿Ayudas habitualmente a los no videntes (a quien lo necesite) a cruzar la
+                        calle?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r29" value=1 id="r29" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r29" value=0 id="r29">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">30.</span>
+                    <span class="fw-bold"> ¿Consideras importante que desde la educación secundaria se fomente la
+                        actitud crítica y la participación activa?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r30" value=1 id="r30" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r30" value=0 id="r30">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">31.</span>
+                    <span class="fw-bold"> ¿Aceptarías que las mujeres formaran parte de las fuerzas armadas bajo las
+                        mismas normas que los hombres?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r31" value=1 id="r31" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r31" value=0 id="r31">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">32.</span>
+                    <span class="fw-bold"> ¿Te gustaría crear nuevas técnicas para descubrir las patologías de algunas
+                        enfermedades a través del microscopio?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r32" value=1 id="r32" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r32" value=0 id="r32">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">33.</span>
+                    <span class="fw-bold"> ¿Participarías en una campaña de prevención contra la enfermedad como el
+                        sida?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r33" value=1 id="r33" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r33" value=0 id="r33">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">27.</span>
+                    <span class="fw-bold"> ¿Te interesan los temas relacionados al pasado y a la evolución del hombre?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r34" value=1 id="r34" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r34" value=0 id="r34">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">27.</span>
+                    <span class="fw-bold"> ¿Te incluirías en un proyecto de investigación de los movimientos sísmicos y
+                        sus consecuencias?
+
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r35" value=1 id="r35" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r35" value=0 id="r35">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">36.</span>
+                    <span class="fw-bold"> ¿Fuera de los horarios escolares, dedicas algún día de la semana a la
+                        realización de actividades corporales?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r36" value=1 id="r36" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r36" value=0 id="r36">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">37.</span>
+                    <span class="fw-bold"> ¿Te interesan las actividades de mucha acción y de reacción rápida en
+                        situaciones imprevistas y de algún peligro?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r37" value=1 id="r37" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r37" value=0 id="r37">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">38.</span>
+                    <span class="fw-bold"> ¿Te ofrecerías para colaborar como voluntario en los gabinetes espaciales de
+                        la NASA?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r38" value=1 id="r38" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r38" value=0 id="r38">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">39.</span>
+                    <span class="fw-bold"> ¿Te gusta más el trabajo manual que el trabajo intelectual?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r39" value=1 id="r39" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r39" value=0 id="r39">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">27.</span>
+                    <span class="fw-bold"> ¿Estarías dispuesto a renunciar a un momento placentero para ofrecer tu
+                        servicio como profesional (ayudando)?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r40" value=1 id="r40" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r40" value=0 id="r40">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">27.</span>
+                    <span class="fw-bold"> ¿Participarías de una investigación sobre la violencia en el fútbol?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r41" value=1 id="r41" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r41" value=0 id="r41">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">22.</span>
+                    <span class="fw-bold"> ¿Te gustaría trabajar en un laboratorio mientras estudias?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r42" value=1 id="r42" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r42" value=0 id="r42">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">43.</span>
+                    <span class="fw-bold"> ¿Arriesgarías tu vida para salvar la vida de otro que no conoces?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r43" value=1 id="r43" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r43" value=0 id="r43">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">44.</span>
+                    <span class="fw-bold"> ¿Te agradaría hacer un curso de primeros auxilios?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r44" value=1 id="r44" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r44" value=0 id="r44">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">45.</span>
+                    <span class="fw-bold"> ¿Tolerarías empezar tantas veces como fuere necesario hasta obtener el logro
+                        deseado?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r45" value=1 id="r45" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r45" value=0 id="r45">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">46.</span>
+                    <span class="fw-bold"> ¿Distribuyes tu horarios del día adecuadamente para poder hacer todo lo
+                        planeado?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r46" value=1 id="r46" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r46" value=0 id="r46">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">47.</span>
+                    <span class="fw-bold"> ¿Harías un curso para aprender a fabricar los instrumentos y/o piezas de las
+                        máquinas o aparatos con que trabajas?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r47" value=1 id="r47" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r47" value=0 id="r47">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">48.</span>
+                    <span class="fw-bold"> ¿Elegirías una profesión en la tuvieras que estar algunos meses alejado de tu
+                        familia, por ejemplo el marino?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r48" value=1 id="r48" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r48" value=0 id="r48">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">49.</span>
+                    <span class="fw-bold"> ¿Te radicarías en una zona agrícola-ganadera para desarrollar tus actividades
+                        como profesional?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r49" value=1 id="r49" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r49" value=0 id="r49">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">50.</span>
+                    <span class="fw-bold"> ¿Cuando estás en un grupo trabajando, te entusiasma producir ideas originales
+                        y que sean tenidas en cuenta?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r50" value=1 id="r50" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r50" value=0 id="r50">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">51.</span>
+                    <span class="fw-bold"> ¿Te resulta fácil coordinar un grupo de trabajo?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r51" value=1 id="r51" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r51" value=0 id="r51">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">52.</span>
+                    <span class="fw-bold"> ¿Te resultó interesante el estudio de las ciencias biológicas?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r52" value=1 id="r52" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r52" value=0 id="r52">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">53.</span>
+                    <span class="fw-bold"> ¿Si una gran empresa solicita un profesional como gerente de
+                        comercialización, te sentirías a gusto desempeñando ese rol?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r53" value=1 id="r53" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r53" value=0 id="r53">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">54.</span>
+                    <span class="fw-bold"> ¿Te incluirías en un proyecto nacional de desarrollo de la principal fuente
+                        de recursos de tu provincia?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r54" value=1 id="r54" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r54" value=0 id="r54">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">55.</span>
+                    <span class="fw-bold"> ¿Tienes interés por saber cuales son las causas que determinan ciertos
+                        fenómenos, aunque saberlo no altere tu vida?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r55" value=1 id="r55" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r55" value=0 id="r55">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">56.</span>
+                    <span class="fw-bold"> ¿Descubriste algún filósofo o escritor que haya expresado tus mismas ideas
+                        con antelación?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r56" value=1 id="r56" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r56" value=0 id="r56">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">57.</span>
+                    <span class="fw-bold"> ¿Desearías que te regalen algún instrumento musical para tu cumpleaños?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r57" value=1 id="r57" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r57" value=0 id="r57">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">58.</span>
+                    <span class="fw-bold"> ¿Aceptarías colaborar con el cumplimiento de las normas en lugares públicos?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r58" value=1 id="r58" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r58" value=0 id="r58">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">59.</span>
+                    <span class="fw-bold"> ¿Crees que tus ideas son importantes, y haces todo lo posible para ponerlas
+                        en práctica?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r59" value=1 id="r59" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r59" value=0 id="r59">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">60.</span>
+                    <span class="fw-bold"> ¿Cuando se descompone un artefacto en tu casa, te dispones prontamente a
+                        repararlo?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r60" value=1 id="r60" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r60" value=0 id="r60">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">61.</span>
+                    <span class="fw-bold"> ¿Formarías parte de un equipo de trabajo orientado a la preservación de la
+                        flora y la fauna en extinción?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r61" value=1 id="r61" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r61" value=0 id="r61">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">62.</span>
+                    <span class="fw-bold"> ¿Leerías revistas relacionadas con los últimos avances científicos y
+                        tecnológicos en el área de la salud?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r62" value=1 id="r62" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r62" value=0 id="r62">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">63.</span>
+                    <span class="fw-bold"> ¿Preservar las raíces culturales de nuestro país, te parece importante y
+                        necesario?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r63" value=1 id="r63" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r63" value=0 id="r63">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">64.</span>
+                    <span class="fw-bold"> ¿Te gustaría realizar una investigación que contribuyera a hacer más justa la
+                        distribución de la riqueza?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r64" value=1 id="r64" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r64" value=0 id="r64">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">65.</span>
+                    <span class="fw-bold"> ¿Te gustaría realizar tareas auxiliares en una nave, como por ejemplo izado y
+                        arriado de velas, pintura y conservación del casco, arreglo de averías, conservación de motores,
+                        etc.?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r65" value=1 id="r65" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r65" value=0 id="r65">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">66.</span>
+                    <span class="fw-bold"> ¿Crees que un país debe poseer la más alta tecnología armamentista, a
+                        cualquier precio?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r66" value=1 id="r66" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r66" value=0 id="r66">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">67.</span>
+                    <span class="fw-bold"> ¿La libertad y la justicia son valores fundamentales en tu vida?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r67" value=1 id="r67" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r67" value=0 id="r67">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">68.</span>
+                    <span class="fw-bold"> ¿Aceptarías hacer una práctica pagadas en una industria de productos
+                        alimenticios en el sector de control de calidad?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r68" value=1 id="r68" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r68" value=0 id="r68">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">69.</span>
+                    <span class="fw-bold"> ¿Consideras que la salud pública debe ser prioritaria, gratuita y eficiente
+                        para todos?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r69" value=1 id="r69" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r69" value=0 id="r69">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">70.</span>
+                    <span class="fw-bold"> ¿Te interesaría investigar sobre alguna nueva vacuna?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r70" value=1 id="r70" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r70" value=0 id="r70">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">71.</span>
+                    <span class="fw-bold"> ¿En un equipo de trabajo, preferís el rol de coordinador?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r71" value=1 id="r71" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r71" value=0 id="r71">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">72.</span>
+                    <span class="fw-bold"> ¿En una discusión entre amigos, te ofreces como mediador?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r72" value=1 id="r72" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r72" value=0 id="r72">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">73.</span>
+                    <span class="fw-bold"> ¿Estás de acuerdo con la formación de un cuerpo de soldados profesionales?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r73" value=1 id="r73" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r73" value=0 id="r73">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">74.</span>
+                    <span class="fw-bold"> ¿Lucharías por una causa justa hasta las últimas consecuencias?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r74" value=1 id="r74" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r74" value=0 id="r74">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">75.</span>
+                    <span class="fw-bold"> ¿Te gustaría investigar científicamente sobre cultivos agrícolas?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r75" value=1 id="r75" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r75" value=0 id="r75">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">76.</span>
+                    <span class="fw-bold"> ¿Harías un nuevo diseño de una prenda pasada de moda, ante una reunión?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r76" value=1 id="r76" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r76" value=0 id="r76">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">77.</span>
+                    <span class="fw-bold"> ¿Visitarías un observatorio astronómico para conocer en acción el
+                        funcionamiento de los aparatos?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r77" value=1 id="r77" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r77" value=0 id="r77">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">78.</span>
+                    <span class="fw-bold"> ¿Dirigirías el área de importación y exportación de una empresa?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r78" value=1 id="r78" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r78" value=0 id="r78">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">79.</span>
+                    <span class="fw-bold"> ¿Te cohíbes/inhibes –cortas- al entrar a un lugar nuevo con gente
+                        desconocida?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r79" value=1 id="r79" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r79" value=0 id="r79">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">80.</span>
+                    <span class="fw-bold"> ¿Te gratificaría el trabajar con niños?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r80" value=1 id="r80" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r80" value=0 id="r80">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">81.</span>
+                    <span class="fw-bold"> ¿Harías el diseño de un cartel o afiche para una campaña contra el sida?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r81" value=1 id="r81" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r81" value=0 id="r81">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">82.</span>
+                    <span class="fw-bold"> ¿Dirigirías un grupo de teatro independiente?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r82" value=1 id="r82" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r82" value=0 id="r82">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">83.</span>
+                    <span class="fw-bold"> ¿Enviarías tu curriculum a una empresa automotriz que solicita gerente para
+                        su área de producción?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r83" value=1 id="r83" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r83" value=0 id="r83">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">84.</span>
+                    <span class="fw-bold"> ¿Participarías en un grupo de defensa internacional dentro de alguna fuerza
+                        armada?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r84" value=1 id="r84" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r84" value=0 id="r84">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">85.</span>
+                    <span class="fw-bold"> ¿Te costearías tus estudios trabajando en una auditoría –revisión de las
+                        cuentas-?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r85" value=1 id="r85" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r85" value=0 id="r85">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">86.</span>
+                    <span class="fw-bold"> ¿Eres de los que defiendes causas perdidas?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r86" value=1 id="r86" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r86" value=0 id="r86">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">87.</span>
+                    <span class="fw-bold"> ¿Ante una emergencia epidémica participarías en una campaña brindando tu
+                        ayuda?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r87" value=1 id="r87" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r87" value=0 id="r87">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">88.</span>
+                    <span class="fw-bold"> ¿Sabrías responder que significa ADN o ARN?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r88" value=1 id="r88" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r88" value=0 id="r88">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">89.</span>
+                    <span class="fw-bold"> ¿Elegirías una carrera cuyo instrumento de trabajo fuere la utilización de un
+                        idioma extranjero?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r89" value=1 id="r89" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r89" value=0 id="r89">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">90.</span>
+                    <span class="fw-bold"> ¿Trabajar con objetos, máquinas, te resulta más gratificante que trabajar con
+                        personas?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r90" value=1 id="r90" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r90" value=0 id="r90">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">91.</span>
+                    <span class="fw-bold"> ¿Te resultaría gratificante ser asesor contable en una empresa reconocida?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r91" value=1 id="r91" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r91" value=0 id="r91">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">92.</span>
+                    <span class="fw-bold"> ¿Ante un llamado solidario, te ofrecerías para cuidar a un enfermo?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r92" value=1 id="r92" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r92" value=0 id="r92">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">93.</span>
+                    <span class="fw-bold"> ¿Te atrae investigar sobre los misterios del universo, por ejemplo los
+                        agujeros negros?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r93" value=1 id="r93" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r93" value=0 id="r93">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">94.</span>
+                    <span class="fw-bold">¿El trabajo individual te resulta más rápido y efectivo que el trabajo grupal?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r94" value=1 id="r94" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r94" value=0 id="r94">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">95.</span>
+                    <span class="fw-bold"> ¿Dedicarías parte de tu tiempo a ayudar a personas con carencias o
+                        necesitadas?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r95" value=1 id="r95" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r95" value=0 id="r95">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div> <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">96.</span>
+                    <span class="fw-bold"> ¿Cuando eliges tu ropa o decoras un ambiente, tienes en cuenta la combinación
+                        de los colores, las telas o el estilo de los muebles?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r96" value=1 id="r96" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r96" value=0 id="r96">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">97.</span>
+                    <span class="fw-bold"> ¿Te gustaría trabajar como profesional dirigiendo la construcción de una
+                        empresa hidroeléctrica?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r97" value=1 id="r97" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r97" value=0 id="r97">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="question borders">
+                <div class="title">
+                    <span class="number">98.</span>
+                    <span class="fw-bold"> ¿Sabes qué es el PIB? Se trata de un concepto económico. ¿Te gusta este tipo
+                        de tema?
+                    </span>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r98" value=1 id="r98" required="required">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        SI
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="r98" value=0 id="r98">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        NO
+                    </label>
+                </div>
+            </div>
+            
+        </div>
+        <br>
+        <div class="d-grid gap-2">
+            <input type="submit" class="btn btn-outline-success" value="Obetener resultado">
+        </div>
+    </form>
+
+</body>
+
+</html>
