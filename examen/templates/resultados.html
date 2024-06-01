@@ -35,7 +35,9 @@
     <div class="container">
         <span>
             <h3>Bienvenido:
+
                 <strong>{{nombres}}</strong>
+
             </h3>
         </span>
         <span>
@@ -50,6 +52,23 @@
         </span>
         <center><img src={{direccionFoto}} width="400" height="400" alt="" class="rounded float-left"></center>
 
+    </div>
+    <br>
+    <div class="container">
+        <H2>Te recomendamos otras carreras:</H2>
+        {% for elemento in professiones %}
+        <span>
+            <h4>
+                <strong>{{elemento.nombre}}</strong>
+            </h4>
+        </span>
+        <span>
+            <h5>
+                {{elemento.descripcion}}
+            </h5>
+        </span>
+        <center><img src={{elemento.foto}} width="400" height="400" alt="" class="rounded float-left"></center>
+        {% endfor %}
     </div>
 
 

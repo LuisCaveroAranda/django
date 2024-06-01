@@ -4,63 +4,81 @@ import numpy as np
 from django.shortcuts import get_object_or_404,render
 import pandas as pd
 from sklearn import svm
+import datetime
+from .models import Examen
+
+hora_actual = datetime.datetime.now()
+
+print(hora_actual)
 
 # Create your views here.
 
 nombres=""
 edad=""
+horaInicioTest=""
+horaFinTest=""
+horaInicioPro=""
+horaFinPro=""
 
 #Muestra el frame de Inicio
 def index(request):
     nombres=""
     edad=""
     return render(request,"index.html")
-    """ if request.method=="GET":
-        nombres=""
-        edad=""
-        return render(request,"index.html")
-    else:
-        nombres=request.POST.get('nombres', False)
-        edad=request.POST.get('edad', False)
-        context= {"nombres":nombres,"edad":edad}
-        return render(request,'proceso.html',context) """
+
 def iniciarProceso(request):
-    nombres=request.POST.get('nombres', False)
-    edad=request.POST.get('edad', False)
-    context= {"nombres":nombres,"edad":edad}
-    return render(request,'proceso.html',context)
+    if request.method=="POST":
+        global nombres,edad,horaInicioTest
+        nombres=request.POST["nombres"]
+        edad=request.POST["edad"]
+        horaInicioTest = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        context= {"nombres":nombres,"edad":edad,}
+        return render(request,'proceso.html',context)
+    else:
+        return render(request,"index.html")
     
 #Muestra el frame realizar Emcuesta
 def resultados(request):
-    interes= np.array([[int(request.POST["r98"]),int(request.POST["r9"]),int(request.POST["r21"]),int(request.POST["r33"]),int(request.POST["r75"]),int(request.POST["r84"]),int(request.POST["r77"])],[int(request.POST["r12"]),int(request.POST["r34"]),int(request.POST["r45"]),int(request.POST["r92"]),int(request.POST["r6"]),int(request.POST["r31"]),int(request.POST["r42"])],[int(request.POST["r64"]),int(request.POST["r80"]),int(request.POST["r96"]),int(request.POST["r70"]),int(request.POST["r19"]),int(request.POST["r48"]),int(request.POST["r88"])],[int(request.POST["r53"]),int(request.POST["r25"]),int(request.POST["r57"]),int(request.POST["r8"]),int(request.POST["r38"]),int(request.POST["r73"]),int(request.POST["r17"])],[int(request.POST["r85"]),int(request.POST["r95"]),int(request.POST["r28"]),int(request.POST["r87"]),int(request.POST["r60"]),int(request.POST["r5"]),int(request.POST["r93"])],[int(request.POST["r1"]),int(request.POST["r67"]),int(request.POST["r11"]),int(request.POST["r62"]),int(request.POST["r27"]),int(request.POST["r65"]),int(request.POST["r32"])],[int(request.POST["r78"]),int(request.POST["r41"]),int(request.POST["r50"]),int(request.POST["r23"]),int(request.POST["r83"]),int(request.POST["r14"]),int(request.POST["r68"])],[int(request.POST["r20"]),int(request.POST["r74"]),int(request.POST["r3"]),int(request.POST["r44"]),int(request.POST["r54"]),int(request.POST["r37"]),int(request.POST["r49"])],[int(request.POST["r71"]),int(request.POST["r56"]),int(request.POST["r81"]),int(request.POST["r16"]),int(request.POST["r47"]),int(request.POST["r58"]),int(request.POST["r35"])],[int(request.POST["r91"]),int(request.POST["r89"]),int(request.POST["r36"]),int(request.POST["r52"]),int(request.POST["r97"]),int(request.POST["r24"]),int(request.POST["r61"])]])
-    
-    aptitudes=np.array([[int(request.POST["r15"]),int(request.POST["r63"]),int(request.POST["r22"]),int(request.POST["r69"]),int(request.POST["r26"]),int(request.POST["r13"]),int(request.POST["r94"])],[int(request.POST["r51"]),int(request.POST["r30"]),int(request.POST["r39"]),int(request.POST["r40"]),int(request.POST["r59"]),int(request.POST["r66"]),int(request.POST["r7"])],[int(request.POST["r2"]),int(request.POST["r72"]),int(request.POST["r76"]),int(request.POST["r28"]),int(request.POST["r90"]),int(request.POST["r18"]),int(request.POST["r79"])],[int(request.POST["r46"]),int(request.POST["r86"]),int(request.POST["r82"]),int(request.POST["r4"]),int(request.POST["r10"]),int(request.POST["r43"]),int(request.POST["r55"])]])
-    sumaInteres=interes.sum(axis=0)
-    sumaAptitudes=aptitudes.sum(axis=0)
-    modelo=entrenamientoModelo()
-    modeloResultado=int(prediccion(modelo,sumaInteres,sumaAptitudes))
-    nombre,descripcion,direccionFoto=devolverPrefession(modeloResultado)
-    context= {"nombres":nombres,"nombre":nombre,"descripcion":descripcion,"direccionFoto":direccionFoto}
-    return render(request,'resultados.html',context)
-
-            
+    if request.method=="POST":
+        global horaFinTest,horaInicioPro,horaFinPro
+        horaFinTest= datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        horaInicioPro= datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        interes= np.array([[int(request.POST["r98"]),int(request.POST["r9"]),int(request.POST["r21"]),int(request.POST["r33"]),int(request.POST["r75"]),int(request.POST["r84"]),int(request.POST["r77"])],[int(request.POST["r12"]),int(request.POST["r34"]),int(request.POST["r45"]),int(request.POST["r92"]),int(request.POST["r6"]),int(request.POST["r31"]),int(request.POST["r42"])],[int(request.POST["r64"]),int(request.POST["r80"]),int(request.POST["r96"]),int(request.POST["r70"]),int(request.POST["r19"]),int(request.POST["r48"]),int(request.POST["r88"])],[int(request.POST["r53"]),int(request.POST["r25"]),int(request.POST["r57"]),int(request.POST["r8"]),int(request.POST["r38"]),int(request.POST["r73"]),int(request.POST["r17"])],[int(request.POST["r85"]),int(request.POST["r95"]),int(request.POST["r28"]),int(request.POST["r87"]),int(request.POST["r60"]),int(request.POST["r5"]),int(request.POST["r93"])],[int(request.POST["r1"]),int(request.POST["r67"]),int(request.POST["r11"]),int(request.POST["r62"]),int(request.POST["r27"]),int(request.POST["r65"]),int(request.POST["r32"])],[int(request.POST["r78"]),int(request.POST["r41"]),int(request.POST["r50"]),int(request.POST["r23"]),int(request.POST["r83"]),int(request.POST["r14"]),int(request.POST["r68"])],[int(request.POST["r20"]),int(request.POST["r74"]),int(request.POST["r3"]),int(request.POST["r44"]),int(request.POST["r54"]),int(request.POST["r37"]),int(request.POST["r49"])],[int(request.POST["r71"]),int(request.POST["r56"]),int(request.POST["r81"]),int(request.POST["r16"]),int(request.POST["r47"]),int(request.POST["r58"]),int(request.POST["r35"])],[int(request.POST["r91"]),int(request.POST["r89"]),int(request.POST["r36"]),int(request.POST["r52"]),int(request.POST["r97"]),int(request.POST["r24"]),int(request.POST["r61"])]])
         
-def resulthhados(request):
-    nombre,descripcion,direccionFoto=devolverPrefession(modeloResultado)
-    context= {"nombres":nombres,"nombre":nombre,"descripcion":descripcion,"direccionFoto":direccionFoto}
-    return render(request,'resultados.html',context)
-     
+        aptitudes=np.array([[int(request.POST["r15"]),int(request.POST["r63"]),int(request.POST["r22"]),int(request.POST["r69"]),int(request.POST["r26"]),int(request.POST["r13"]),int(request.POST["r94"])],[int(request.POST["r51"]),int(request.POST["r30"]),int(request.POST["r39"]),int(request.POST["r40"]),int(request.POST["r59"]),int(request.POST["r66"]),int(request.POST["r7"])],[int(request.POST["r2"]),int(request.POST["r72"]),int(request.POST["r76"]),int(request.POST["r28"]),int(request.POST["r90"]),int(request.POST["r18"]),int(request.POST["r79"])],[int(request.POST["r46"]),int(request.POST["r86"]),int(request.POST["r82"]),int(request.POST["r4"]),int(request.POST["r10"]),int(request.POST["r43"]),int(request.POST["r55"])]])
+        sumaInteres=interes.sum(axis=0)
+        sumaAptitudes=aptitudes.sum(axis=0)
+        modelo=entrenamientoModelo()
+        modeloResultado=int(prediccion(modelo,sumaInteres,sumaAptitudes))
         
-""" def resultado(request):
-    if  request.method == 'GET':
-        nombre,descripcion,direccionFoto=devolverPrefession(resultado) 
-        context= {"nombres":nombres,"nombre":nombre,"descripcion":descripcion,"direccionFoto":direccionFoto}
+        horaFinPro= datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        examen=Examen()
+        examen.nombre=nombres
+        examen.edad=edad
+        examen.horaInicioTest=horaInicioTest
+        examen.horaFinTest=horaFinTest
+        examen.horaInicioPro=horaInicioPro
+        examen.horaFinPro=horaFinPro
+       
+        mejoresCarrerass=mejoresCarreras(modeloResultado)
+        professiones=()
+        lista = list(professiones)
+        for carrera in mejoresCarrerass:
+            nombre,descripcion,direccionFoto=devolverPrefession(carrera)
+            carreratop={'nombre': nombre,
+                                 'descripcion':descripcion,
+                                 'foto': direccionFoto}
+            lista.append(carreratop)
+        nombre,descripcion,direccionFoto=devolverPrefession(modeloResultado)    
+        context= {"nombres":nombres,"nombre":nombre,"descripcion":descripcion,"direccionFoto":direccionFoto,"professiones":lista}
         return render(request,'resultados.html',context)
     else:
-        nombres=""
-        edad=""
-        resultado=0
-        return render(request,"index.html") """
+        return render(request,"index.html")
+
+            
+def handler404(request,exception):
+    return render(request,"not_found.html")
+     
 
 def devolverPrefession(idResultado):
     nombre=""
@@ -237,20 +255,57 @@ def devolverPrefession(idResultado):
       'descripcion':'La Agronomía es una carrera que se enfoca en el estudio, la gestión y la optimización de los procesos de producción agrícola y ganadera. Se encarga de aplicar conocimientos científicos y tecnológicos para cultivar la tierra de manera eficiente y sostenible, con el objetivo de obtener alimentos y otros productos de primera necesidad. Los ingenieros agrónomos, profesionales egresados de esta carrera, trabajan en diversos ámbitos, desde el manejo de cultivos y el cuidado del ganado hasta la agroindustria y la investigación. Su labor es fundamental para garantizar la seguridad alimentaria y el desarrollo rural. En resumen, la Agronomía es una carrera que combina ciencia, tecnología y pasión por el campo, con un gran potencial para impactar positivamente en el mundo.',
       'foto': "../static/INGENIERIA_DE_SISTEMAS.jpg",
      })
-    for color in professiones:
-        if(color.get("id")==idResultado):
-            nombre=color.get("nombre")
-            descripcion=color.get("descripcion")
-            direccionFoto=color.get("foto")
+    for profession in professiones:
+        if(profession.get("id")==idResultado):
+            nombre=profession.get("nombre")
+            descripcion=profession.get("descripcion")
+            direccionFoto=profession.get("foto")
             break
     return nombre,descripcion,direccionFoto
+
+def devolverTop(rango,x):
+    subconjunto = []
+    contador=1
+    for numero in rango:
+        if numero != x and contador<=3:
+            subconjunto.append(numero)
+        contador+=1
+    return subconjunto
+    
+def mejoresCarreras(resultado):
+    subconjunto = []
+    contador=1
+    if(resultado>=1 and resultado<=4):
+        rango = (1, 2, 3, 4)
+        return devolverTop(rango,resultado)
+    elif(resultado>=5 and resultado<=9):
+        rango = (6, 5, 7, 8, 9)
+        return devolverTop(rango,resultado)
+    elif(resultado>=10 and resultado<=17):
+        rango = (10, 12, 11, 16, 17,13,14,15)
+        return devolverTop(rango,resultado)
+    elif(resultado>=18 and resultado<=25):
+        rango = (18, 19, 20, 21, 24, 25,22,23 )
+        return devolverTop(rango,resultado)
+    elif(resultado>=18 and resultado<=25):
+        rango = (18, 19, 20, 21, 24, 25,22,23 )
+        return devolverTop(rango,resultado)
+    elif(resultado>=26 and resultado<=31):
+        rango = (26, 30, 29, 27, 28, 31)
+        return devolverTop(rango,resultado)
+    elif(resultado>=32 and resultado<=33):
+        rango = (32, 33, 29, 27, 28, 31)
+        return devolverTop(rango,resultado)
+    else:
+        return (34)
+
 
 def entrenamientoModelo():
     df=pd.read_csv("respuestasoficiales.csv" , encoding='latin-1')
     x_train=df.iloc[:,0:14]
     y_train=df.iloc[:,14:15]
     modelo=svm.SVC()
-    modelo.fit(x_train,y_train)
+    modelo.fit(x_train,y_train.values.ravel())
     return modelo
 
 def prediccion(modelo,sumaInteres,sumaAptitudes):

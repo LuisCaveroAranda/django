@@ -23,3 +23,5 @@ urlpatterns = [
 
 
 ]
+
+handler404="examen.views.handler404"
